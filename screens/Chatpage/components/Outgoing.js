@@ -22,35 +22,48 @@ const Outgoing = (props) => {
     "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
 
   useEffect(() => {
-    return sound ? () => sound.unloadAsync() : undefined;
+    return () => {
+      if (sound) {
+        sound.unloadAsync();
+      }
+    };
   }, [sound]);
 
   const playAudio = async () => {
-    if (!isPlaying) {
-      const { sound: newSound } = await Audio.Sound.createAsync({
-        uri: dummyAudio,
-      });
-      setSound(newSound);
-      await newSound.playAsync();
-      setIsPlaying(true);
+    try {
+      if (!isPlaying) {
+        const { sound: newSound } = await Audio.Sound.createAsync({
+          uri: dummyAudio,
+        });
+        setSound(newSound);
+        await newSound.playAsync();
+        setIsPlaying(true);
 
-      newSound.setOnPlaybackStatusUpdate((status) => {
-        if (!status.isPlaying) {
-          setIsPlaying(false);
-          newSound.unloadAsync();
-        }
-      });
-    } else {
-      stopAudio();
+        newSound.setOnPlaybackStatusUpdate((status) => {
+          if (!status.isPlaying) {
+            setIsPlaying(false);
+            newSound.unloadAsync();
+            setSound(null);
+          }
+        });
+      } else {
+        stopAudio();
+      }
+    } catch (error) {
+      console.error("Error playing audio:", error);
     }
   };
 
   const stopAudio = async () => {
-    if (sound) {
-      await sound.stopAsync();
-      await sound.unloadAsync();
-      setIsPlaying(false);
-      setSound(null);
+    try {
+      if (sound) {
+        await sound.stopAsync();
+        await sound.unloadAsync();
+        setIsPlaying(false);
+        setSound(null);
+      }
+    } catch (error) {
+      console.error("Error stopping audio:", error);
     }
   };
 
@@ -91,4 +104,5 @@ const Outgoing = (props) => {
 const mapStateToProps = (state) => ({
   errors: state.errors.errors,
 });
+
 export default connect(mapStateToProps, {})(Outgoing);

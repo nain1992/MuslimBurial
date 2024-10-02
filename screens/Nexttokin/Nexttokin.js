@@ -6,12 +6,14 @@ import {
   ScrollView,
   TextInput,
   Image,
+  Platform,
 } from "react-native";
 import { connect } from "react-redux";
 import { styles as _styles } from "../../styles/Nexttokin/main";
 import { useState } from "react";
 import Profileheader from "../../globalComponents/Profileheader";
 import Profilefields from "../../globalComponents/Profilefields";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 const Nexttokin = (props) => {
   let {} = props;
@@ -31,7 +33,12 @@ const Nexttokin = (props) => {
 
   return (
     <View style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <KeyboardAwareScrollView
+        extraScrollHeight={100}
+        enableOnAndroid={true}
+        enableAutomaticScroll={Platform.OS === "ios"}
+        showsVerticalScrollIndicator={false}
+      >
         <View style={styles.scrollwrapper}>
           <Profileheader title={"Next to Kin"} navigation={props?.navigation} />
           <Profilefields
@@ -75,8 +82,8 @@ const Nexttokin = (props) => {
           <Profilefields
             image={require("../../assets/p1.png")}
             placeholder="Enter Next of Kin Email Address"
-            value={address2}
-            onChangeText={(val) => setAddress2(val)}
+            value={email2}
+            onChangeText={(val) => setEmail2(val)}
           />
           <Profilefields
             image={require("../../assets/p1.png")}
@@ -101,7 +108,7 @@ const Nexttokin = (props) => {
             <Text style={styles.btntext}>Submit</Text>
           </TouchableOpacity>
         </View>
-      </ScrollView>
+      </KeyboardAwareScrollView>
     </View>
   );
 };

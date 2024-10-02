@@ -60,7 +60,7 @@ const Thankupage = (props) => {
           <Text style={styles.Sharetext}>Share to social</Text>
         </TouchableOpacity>
       </View>
-      <Bottommenu navigation={props?.navigation} />
+      <Bottommenu active={"Donate"} navigation={props?.navigation} />
     </View>
   );
 };

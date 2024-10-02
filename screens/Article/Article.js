@@ -67,7 +67,7 @@ const Article = (props) => {
           </Text>
         </View>
       </ScrollView>
-      <Bottommenu navigation={props?.navigation} />
+      <Bottommenu active={"Home"} navigation={props?.navigation} />
     </View>
   );
 };

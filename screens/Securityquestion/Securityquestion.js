@@ -4,6 +4,8 @@ import {
   Text,
   TouchableOpacity,
   ScrollView,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from "react-native";
 import { connect } from "react-redux";
 import { styles as _styles } from "../../styles/Nexttokin/main";
@@ -21,37 +23,39 @@ const Securityquestion = (props) => {
   const [question3, setQuestion3] = useState("");
 
   return (
-    <View style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.scrollwrapper}>
-          <Profileheader
-            title={"Security Question"}
-            navigation={props?.navigation}
-          />
-          <Profilefields
-            image={require("../../assets/p1.png")}
-            placeholder="Select Security Question 1"
-            value={question1}
-            onChangeText={(val) => setQuestion1(val)}
-          />
-          <Profilefields
-            image={require("../../assets/p1.png")}
-            placeholder="Select Security Question 2"
-            value={question2}
-            onChangeText={(val) => setQuestion2(val)}
-          />
-          <Profilefields
-            image={require("../../assets/p1.png")}
-            placeholder="Select Security Question 3"
-            value={question3}
-            onChangeText={(val) => setQuestion3(val)}
-          />
-          <TouchableOpacity style={styles.nextbtn}>
-            <Text style={styles.btntext}>Submit</Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
-    </View>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={styles.container}>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={styles.scrollwrapper}>
+            <Profileheader
+              title={"Security Question"}
+              navigation={props?.navigation}
+            />
+            <Profilefields
+              image={require("../../assets/p1.png")}
+              placeholder="Select Security Question 1"
+              value={question1}
+              onChangeText={(val) => setQuestion1(val)}
+            />
+            <Profilefields
+              image={require("../../assets/p1.png")}
+              placeholder="Select Security Question 2"
+              value={question2}
+              onChangeText={(val) => setQuestion2(val)}
+            />
+            <Profilefields
+              image={require("../../assets/p1.png")}
+              placeholder="Select Security Question 3"
+              value={question3}
+              onChangeText={(val) => setQuestion3(val)}
+            />
+            <TouchableOpacity style={styles.nextbtn}>
+              <Text style={styles.btntext}>Submit</Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 

@@ -162,7 +162,7 @@ const Donatepage = (props) => {
           </View>
         </View>
       </ScrollView>
-      <Bottommenu navigation={props?.navigation} />
+      <Bottommenu active={"Donate"} navigation={props?.navigation} />
     </View>
   );
 };

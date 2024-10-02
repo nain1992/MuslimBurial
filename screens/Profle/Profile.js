@@ -109,7 +109,7 @@ const Profile = (props) => {
         </View>
         <View style={styles.profilepicbody}></View>
       </ScrollView>
-      <Bottommenu navigation={props?.navigation} />
+      <Bottommenu active={"Profile"} navigation={props?.navigation} />
     </View>
   );
 };

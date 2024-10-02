@@ -86,4 +86,9 @@ export const styles = ({ width, height }) =>
       marginVertical: 5,
       justifyContent: "center",
     },
+    socialbtnwrapper: {
+      height: getPercent(30, height),
+      justifyContent: "space-around",
+      paddingVertical: 10,
+    },
   });

@@ -4,6 +4,8 @@ import {
   Text,
   TouchableOpacity,
   ScrollView,
+  Keyboard,
+  TouchableWithoutFeedback,
 } from "react-native";
 import { connect } from "react-redux";
 import { styles as _styles } from "../../styles/Nexttokin/main";
@@ -21,37 +23,39 @@ const Localmosque = (props) => {
   const [postcode, setPostcode] = useState("");
 
   return (
-    <View style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.scrollwrapper}>
-          <Profileheader
-            title={"Local Mosque"}
-            navigation={props?.navigation}
-          />
-          <Profilefields
-            image={require("../../assets/p1.png")}
-            placeholder="Local Mosque Name"
-            value={name}
-            onChangeText={(val) => setName(val)}
-          />
-          <Profilefields
-            image={require("../../assets/p1.png")}
-            placeholder="Local Mosque Address"
-            value={address}
-            onChangeText={(val) => setAddress(val)}
-          />
-          <Profilefields
-            image={require("../../assets/p1.png")}
-            placeholder="Local Mosque Post Code."
-            value={postcode}
-            onChangeText={(val) => setPostcode(val)}
-          />
-          <TouchableOpacity style={styles.nextbtn}>
-            <Text style={styles.btntext}>Submit</Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
-    </View>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={styles.container}>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={styles.scrollwrapper}>
+            <Profileheader
+              title={"Local Mosque"}
+              navigation={props?.navigation}
+            />
+            <Profilefields
+              image={require("../../assets/p1.png")}
+              placeholder="Local Mosque Name"
+              value={name}
+              onChangeText={(val) => setName(val)}
+            />
+            <Profilefields
+              image={require("../../assets/p1.png")}
+              placeholder="Local Mosque Address"
+              value={address}
+              onChangeText={(val) => setAddress(val)}
+            />
+            <Profilefields
+              image={require("../../assets/p1.png")}
+              placeholder="Local Mosque Post Code."
+              value={postcode}
+              onChangeText={(val) => setPostcode(val)}
+            />
+            <TouchableOpacity style={styles.nextbtn}>
+              <Text style={styles.btntext}>Submit</Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 

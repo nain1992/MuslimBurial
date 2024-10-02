@@ -144,7 +144,7 @@ const Transactionhistory = (props) => {
           </View>
         </View>
       )}
-      <Bottommenu navigation={props?.navigation} />
+      <Bottommenu active={"Donate"} navigation={props?.navigation} />
     </View>
   );
 };

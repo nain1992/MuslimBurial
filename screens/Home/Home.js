@@ -54,7 +54,7 @@ const Home = (props) => {
           })}
         </View>
       </ScrollView>
-      <Bottommenu navigation={props?.navigation} />
+      <Bottommenu active={"Home"} navigation={props?.navigation} />
     </View>
   );
 };

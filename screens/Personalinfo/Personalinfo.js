@@ -3,7 +3,6 @@ import {
   useWindowDimensions,
   Text,
   TouchableOpacity,
-  ScrollView,
   Image,
   Platform,
 } from "react-native";
@@ -13,6 +12,7 @@ import { useState } from "react";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import Profileheader from "../../globalComponents/Profileheader";
 import Profilefields from "../../globalComponents/Profilefields";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 const Personalinfo = (props) => {
   let {} = props;
@@ -23,7 +23,7 @@ const Personalinfo = (props) => {
   const [fullname, setFullname] = useState("");
   const [mbnumber, setMbnumber] = useState("");
   const [dateofbirth, setDateofbirth] = useState("");
-  const [showDatePicker, setShowDatePicker] = useState(false); // State for showing the date picker
+  const [showDatePicker, setShowDatePicker] = useState(false);
   const [address1, setAddress1] = useState("");
   const [address2, setAddress2] = useState("");
   const [city, setCity] = useState("");
@@ -32,15 +32,20 @@ const Personalinfo = (props) => {
   const [password, setPassword] = useState("");
 
   const onChangeDate = (event, selectedDate) => {
-    setShowDatePicker(false); // Close date picker
+    setShowDatePicker(false);
     if (selectedDate) {
       const currentDate = selectedDate || dateofbirth;
-      setDateofbirth(currentDate.toLocaleDateString("en-GB")); // Format the date as needed
+      setDateofbirth(currentDate.toLocaleDateString("en-GB"));
     }
   };
   return (
     <View style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <KeyboardAwareScrollView
+        extraScrollHeight={100}
+        enableOnAndroid={true}
+        enableAutomaticScroll={Platform.OS === "ios"}
+        showsVerticalScrollIndicator={false}
+      >
         <View style={styles.scrollwrapper}>
           <Profileheader
             title={"Personal Information"}
@@ -65,25 +70,23 @@ const Personalinfo = (props) => {
             onChangeText={(val) => setMbnumber(val)}
           />
 
-          {/* Date of Birth Field with Date Picker */}
           <TouchableOpacity onPress={() => setShowDatePicker(true)}>
             <Profilefields
               image={require("../../assets/4.png")}
               placeholder="Date of Birth"
               value={dateofbirth}
               onChangeText={() => {}}
-              editable={false} // Prevent manual editing of date field
+              editable={false}
             />
           </TouchableOpacity>
 
-          {/* Date Picker Modal */}
           {showDatePicker && (
             <DateTimePicker
               value={new Date()}
               mode="date"
               display={Platform.OS === "ios" ? "spinner" : "default"}
               onChange={onChangeDate}
-              maximumDate={new Date()} // Prevent future dates
+              maximumDate={new Date()}
             />
           )}
 
@@ -139,7 +142,7 @@ const Personalinfo = (props) => {
             <Text style={styles.btntext}>Next</Text>
           </TouchableOpacity>
         </View>
-      </ScrollView>
+      </KeyboardAwareScrollView>
     </View>
   );
 };

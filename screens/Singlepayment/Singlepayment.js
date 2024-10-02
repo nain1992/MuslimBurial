@@ -26,6 +26,7 @@ const Singlepayment = (props) => {
     {
       title: "Card Number",
       placeholder: "1234 567 895 567",
+      keyboardType: "decimal-pad",
     },
     {
       title: "Expiry Date",
@@ -34,6 +35,7 @@ const Singlepayment = (props) => {
     {
       title: "CVV",
       placeholder: "111",
+      keyboardType: "decimal-pad",
     },
   ];
   return (
@@ -63,6 +65,7 @@ const Singlepayment = (props) => {
                   <TextInput
                     style={styles.name}
                     placeholder={item?.placeholder}
+                    keyboardType={item?.keyboardType}
                   />
                 </View>
               </>
@@ -76,7 +79,7 @@ const Singlepayment = (props) => {
           />
         </View>
       </ScrollView>
-      <Bottommenu navigation={props?.navigation} />
+      <Bottommenu active={"Donate"} navigation={props?.navigation} />
     </View>
   );
 };

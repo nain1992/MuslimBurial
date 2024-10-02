@@ -108,7 +108,7 @@ const Verification = (props) => {
           <AntDesign name="plus" size={18} color="#fff" />
         </TouchableOpacity>
       </ScrollView>
-      <Bottommenu navigation={props?.navigation} />
+      <Bottommenu active={"Profile"} navigation={props?.navigation} />
     </View>
   );
 };

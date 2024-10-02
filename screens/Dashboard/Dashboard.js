@@ -144,7 +144,7 @@ const Dashboard = (props) => {
           </TouchableOpacity>
         </View>
       </ScrollView>
-      <Bottommenu navigation={props?.navigation} />
+      <Bottommenu active={"Group"} navigation={props?.navigation} />
     </View>
   );
 };

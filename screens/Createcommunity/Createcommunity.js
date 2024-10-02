@@ -108,7 +108,7 @@ const Createcommunity = (props) => {
           </View>
         </View>
       </ScrollView>
-      <Bottommenu navigation={props?.navigation} />
+      <Bottommenu active={"Group"} navigation={props?.navigation} />
     </View>
   );
 };

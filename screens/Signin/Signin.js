@@ -62,38 +62,40 @@ const Signin = (props) => {
           <Text style={styles.ortext}>OR</Text>
           <View style={styles.border}></View>
         </View>
-        <TouchableOpacity
-          onPress={() => alert("Coming Soon!")}
-          style={styles.socialbtn}
-        >
-          <View style={styles.iconbody}>
-            <Image
-              source={require("../../assets/2.png")}
-              style={{ height: "100%", width: "100%" }}
-              resizeMode="contain"
-            />
-          </View>
-          <Text style={styles.btntext}>Continue with Facebook</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => alert("Coming Soon!")}
-          style={styles.socialbtn}
-        >
-          <View style={styles.iconbody}>
-            <Image
-              source={require("../../assets/3.png")}
-              style={{ height: "100%", width: "100%" }}
-              resizeMode="contain"
-            />
-          </View>
-          <Text style={styles.btntext}>Continue with Google</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => props?.navigation?.navigate("Register")}
-          style={styles.signupbtn}
-        >
-          <Text style={styles.btntext}>Sign Up</Text>
-        </TouchableOpacity>
+        <View style={styles.socialbtnwrapper}>
+          <TouchableOpacity
+            onPress={() => alert("Coming Soon!")}
+            style={styles.socialbtn}
+          >
+            <View style={styles.iconbody}>
+              <Image
+                source={require("../../assets/2.png")}
+                style={{ height: "100%", width: "100%" }}
+                resizeMode="contain"
+              />
+            </View>
+            <Text style={styles.btntext}>Continue with Facebook</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => alert("Coming Soon!")}
+            style={styles.socialbtn}
+          >
+            <View style={styles.iconbody}>
+              <Image
+                source={require("../../assets/3.png")}
+                style={{ height: "100%", width: "100%" }}
+                resizeMode="contain"
+              />
+            </View>
+            <Text style={styles.btntext}>Continue with Google</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => props?.navigation?.navigate("Register")}
+            style={styles.signupbtn}
+          >
+            <Text style={styles.btntext}>Sign Up</Text>
+          </TouchableOpacity>
+        </View>
       </KeyboardAwareScrollView>
     </View>
   );

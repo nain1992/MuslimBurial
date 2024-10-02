@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 import { Bottommenustyles } from "../styles/Global/main";
 
 const Bottommenu = (props) => {
-  let { title } = props;
+  let { title, active } = props;
   let { width, height } = useWindowDimensions();
   let styles = Bottommenustyles({ width, height });
 
@@ -20,44 +20,96 @@ const Bottommenu = (props) => {
         style={styles.iconbody}
       >
         <Image
-          source={require("../assets/21.png")}
+          source={
+            active === "Home"
+              ? require("../assets/21.png")
+              : require("../assets/h.png")
+          }
           style={{ height: "50%", width: "50%" }}
           resizeMode="contain"
         />
-        <Text style={styles.title}>Home</Text>
+        <Text
+          style={[
+            styles.title,
+            {
+              color: active === "Home" ? "#5CB9F2" : "#969FA2",
+            },
+          ]}
+        >
+          Home
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => props?.navigation?.navigate("Groupchoice")}
         style={styles.iconbody}
       >
         <Image
-          source={require("../assets/22.png")}
+          source={
+            active === "Group"
+              ? require("../assets/g.png")
+              : require("../assets/h.png")
+          }
           style={{ height: "50%", width: "50%" }}
           resizeMode="contain"
         />
-        <Text style={styles.title}>Group</Text>
+        <Text
+          style={[
+            styles.title,
+            {
+              color: active === "Group" ? "#5CB9F2" : "#969FA2",
+            },
+          ]}
+        >
+          Group
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => props?.navigation?.navigate("Donatepage")}
         style={styles.iconbody}
       >
         <Image
-          source={require("../assets/23.png")}
+          source={
+            active === "Donate"
+              ? require("../assets/d.png")
+              : require("../assets/23.png")
+          }
           style={{ height: "50%", width: "50%" }}
           resizeMode="contain"
         />
-        <Text style={styles.title}>Donate</Text>
+        <Text
+          style={[
+            styles.title,
+            {
+              color: active === "Donate" ? "#5CB9F2" : "#969FA2",
+            },
+          ]}
+        >
+          Donate
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => props?.navigation?.navigate("Profile")}
         style={styles.iconbody}
       >
         <Image
-          source={require("../assets/24.png")}
+          source={
+            active === "Profile"
+              ? require("../assets/p.png")
+              : require("../assets/24.png")
+          }
           style={{ height: "50%", width: "50%" }}
           resizeMode="contain"
         />
-        <Text style={styles.title}>Profile</Text>
+        <Text
+          style={[
+            styles.title,
+            {
+              color: active === "Profile" ? "#5CB9F2" : "#969FA2",
+            },
+          ]}
+        >
+          Profile
+        </Text>
       </TouchableOpacity>
     </View>
   );
